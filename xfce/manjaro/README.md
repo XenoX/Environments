@@ -1,4 +1,4 @@
-# :fire: ManjaroXfceEnvironment
+# :fire: Xfce Manjaro Environment
 Manjaro Xfce environment setup from scratch
 
 - [Software and Web Dev Tools](software_and_tools.md)

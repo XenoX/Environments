@@ -5,8 +5,8 @@
 ## Get this repository
 ```shell
 cd ~/Downloads/ &&
-git clone https://github.com/XenoX/ManjaroXfceEnvironment.git &&
-cd ManjaroXfceEnvironment/
+git clone https://github.com/XenoX/Environments.git &&
+cd Environments/
 ```
 
 ## Basic configuration
