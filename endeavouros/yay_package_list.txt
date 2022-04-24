@@ -1,0 +1,14 @@
+phpstorm
+spotify 
+spotify-tui
+vscodium-bin
+cherrytree
+flameshot
+teams
+slack-desktop
+burpsuite
+hashcat
+crunch
+ffuf-bin
+wordlists
+nerd-fonts-complete
