@@ -1,6 +1,5 @@
 phpstorm
 spotify 
-spotify-tui
 vscodium-bin
 cherrytree
 flameshot
@@ -11,4 +10,4 @@ hashcat
 crunch
 ffuf-bin
 wordlists
-nerd-fonts-complete
+ttf-meslo-nerd-font-powerlevel10k

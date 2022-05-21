@@ -1,14 +1,5 @@
 # Software and web dev tools
 
-## Required
-On `Add/Remove Software` settings, add AUR and Snap support  
-Refresh Mirrors List in "Official Repositories" tab
-
-## Core packages
-```shell
-sudo pacman -Syyu --noconfirm make vim exa neofetch ttc-iosevka ttf-roboto noto-fonts noto-fonts-emoji ttf-jetbrains-mono ttf-meslo-nerd-font-powerlevel10k && pamac install ttf-ms-fonts --no-confirm
-```
-
 ## Web dev packages
 
 ### PHP 8
@@ -56,25 +47,6 @@ FLUSH PRIVILEGES;
 
 mysql -u xenox -p # For test mariaDB connection
 ```
-
-### JS
-```shell
-sudo pacman -S --noconfirm nodejs npm yarn &&
-sudo npm install -g nodemon &&
-```
-
-## Others software
-
-- vscodium
-- phpstorm
-- datagrip
-- insomnia
-- spotify
-- discord
-- slack
-- zoom
-- teams
-- bitwarden
 
 ### Setup wireguard VPN (Mullvad)
 

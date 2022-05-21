@@ -1,19 +1,6 @@
-## Get this repository
-```shell
-cd ~/Downloads/ &&
-git clone https://github.com/XenoX/Environments.git &&
-cd Environments/
-```
-
-### Set wallpaper
-```shell
-cp -r wallpaper ~/Pictures/
-# Right click on your favorite wallpaper -> Set as wallpaper
-```
-
 ## Base configuration
 ```shell
-git config --global user.name "ChangeMe"
+git config --global user.name "XenoX"
 git config --global user.email "changeme@gmail.com"
 
 git config --global core.editor vim
