@@ -286,6 +286,18 @@ bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 # configuration for workspace behaviour: #
 ##########################################
 
+bindsym $mod+shift+S mode "move"
+mode "move" {
+	bindsym Left move workspace to output left, focus output left, mode "default"
+	bindsym Right move workspace to output right, focus output right, mode "default"
+	bindsym Up move workspace to output up, focus output up, mode "default"
+	bindsym Down move workspace to output down, focus output down, mode "default"
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+Shift+S mode "default"
+}
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -300,17 +312,18 @@ set $ws9 "9"
 set $ws10 "10"
 
 # use workspaces on different displays:
-# where you have to replace VGA-0/HDMI-0 with the names for your displays
+# where you have to replace DP1/DP3-2 with the names for your displays
 # you can get from xrandr command
 workspace $ws1 output DP1
 workspace $ws2 output DP1
 workspace $ws3 output DP3-2
-workspace $ws4 output eDP1
-workspace $ws5 output eDP1
-workspace $ws6 output DP1
+workspace $ws4 output DP1
+workspace $ws5 output DP1
+workspace $ws6 output DP3-2
 workspace $ws7 output DP1
 workspace $ws8 output DP1
 workspace $ws9 output DP1
+workspace $ws10 output DP1
 
 # bind program to workspace and focus to them on startup:
 assign [class="(?i)firefox"] $ws1
@@ -321,9 +334,9 @@ assign [class="Discord"] $ws4
 assign [class="Thunar"] $ws5
 
 # automatic set focus new window if it opens on another workspace then the current:
-for_window [class=Terminator] focus
-for_window [class=(?i)firefox] focus
-for_window [class=Thunar] focus
+for_window [class="Terminator"] focus
+for_window [class="(?i)firefox"] focus
+for_window [class="Thunar"] focus
 
 ##############
 # compositor #
@@ -398,7 +411,6 @@ exec --no-startup-id xset s 480 dpms 600 600 600
 # https://wiki.archlinux.org/title/Session_lock#xautolock
 #exec --no-startup-id xautolock -time 60 -locker "systemctl suspend"
 
-
 # xscreensaver
 # https://www.jwz.org/xscreensaver
 #exec --no-startup-id xscreensaver --no-splash
@@ -417,6 +429,7 @@ exec_always --no-startup-id autotiling
 #exec --no-startup-id sleep 2 && xfce4-terminal
 #exec --no-startup-id sleep 7 && firefox https://github.com/endeavouros-team/endeavouros-i3wm-setup/blob/main/force-knowledge.md
 #exec --no-startup-id sleep 3 && thunar
+exec --no-startup-id sleep 3 && blueberry
 exec --no-startup-id sleep 3 && flameshot
 
 ###############
@@ -500,7 +513,7 @@ bar {
 	# it could be that you have no primary display set: set one (xrandr --output <output> --primary)
 	# reference: https://i3wm.org/docs/userguide.html#_tray_output
 	tray_output primary
-	tray_padding 3
+	tray_padding 5
 
 	# When strip_workspace_numbers is set to yes,
 	# any workspace that has a name of the form
