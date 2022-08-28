@@ -1,13 +1,11 @@
+feh
 phpstorm
 spotify 
-vscodium-bin
+vscodium
 cherrytree
 flameshot
-teams
 slack-desktop
 burpsuite
-hashcat
-crunch
 ffuf-bin
 wordlists
 ttf-meslo-nerd-font-powerlevel10k
