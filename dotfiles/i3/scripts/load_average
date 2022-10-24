@@ -14,36 +14,21 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-TYPE="${BLOCK_INSTANCE:-mem}"
+load="$(cut -d ' ' -f1 /proc/loadavg)"
+cpus="$(nproc)"
 
-awk -v type=$TYPE '
-/^MemTotal:/ {
-	mem_total=$2
-}
-/^MemFree:/ {
-	mem_free=$2
-}
-/^Buffers:/ {
-	mem_free+=$2
-}
-/^Cached:/ {
-	mem_free+=$2
-}
-/^SwapTotal:/ {
-	swap_total=$2
-}
-/^SwapFree:/ {
-	swap_free=$2
-}
-END {
-	# full text
-	if (type == "swap")
-		printf("%.1fG FREE\n", (swap_total-swap_free)/1024/1024)
-	else
-		printf("%.1fG FREE\n", mem_free/1024/1024)
+# full text
+echo "$load"
 
-	# TODO: short text
+# short text
+echo "$load"
 
-	# TODO: color (if less than X%)
-}
-' /proc/meminfo
+# color if load is too high
+awk -v cpus=$cpus -v cpuload=$load '
+    BEGIN {
+        if (cpus <= cpuload) {
+            print "#FF0000";
+            exit 33;
+        }
+    }
+'
