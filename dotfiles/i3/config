@@ -163,9 +163,9 @@ workspace $ws10 output $screenPrimary
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id ~/.screenlayout/monitor.sh
-exec --no-startup-id feh --bg-fill ~/Pictures/bg.png
+exec --no-startup-id feh --bg-fill ~/Pictures/dracula.jpg
 # exec --no-startup-id xset s 480 dpms 600 600 600
-exec --no-startup-id dunst -config $HOME/.config/dunst/base16-nord.dunstrc
+exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
 exec --no-startup-id sleep 3 && blueberry
 exec --no-startup-id sleep 3 && flameshot
 
@@ -209,49 +209,32 @@ mode "$mode_system" {
 # color settings for bar and windows #
 ######################################
 
-# set primary gruvbox colorscheme colors
-set $bg #282828
-set $red #cc241d
-set $green #98971a
-set $yellow #d79921
-set $blue #458588
-set $purple #b16286
-set $aqua #689d68
-set $gray #a89984
-set $darkgray #1d2021
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 
-# green gruvbox
-# class                 border|backgr|text|indicator|child_border
-# client.focused          $green $green $darkgray $purple $darkgray
-# client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
-# client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
-# client.urgent           $red $red $white $red $red
-
-# blue gruvbox
-# class                 border|backgr|text|indicator|child_border
-client.focused          $blue $blue $darkgray $purple $blue
-client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
-client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
-client.urgent           $red $red $white $red $red
+client.background       #F8F8F2
 
 font pango: Noto Sans Regular 10
 
 bar {
-    position bottom
+    position top
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
     tray_output primary
     tray_padding 3
     colors {
-        # bar background color
-        background $bg
-        # text color used for blocks that do not have a color specified.
-        statusline $blue
-        # workspaces section
-        #                    border  backgr. text
-        focused_workspace    $blue $blue $darkgray
-        inactive_workspace   $darkgray $darkgray $yellow
-        active_workspace     $darkgray $darkgray $yellow
-        urgent_workspace     $red $red $bg
+        background #282A36
+        statusline #F8F8F2
+        separator  #44475A
+
+        focused_workspace  #44475A #44475A #F8F8F2
+        active_workspace   #282A36 #44475A #F8F8F2
+        inactive_workspace #282A36 #282A36 #BFBFBF
+        urgent_workspace   #FF5555 #FF5555 #F8F8F2
+        binding_mode       #FF5555 #FF5555 #F8F8F2
     }
 }
 
@@ -259,8 +242,7 @@ bar {
 # Application menu handled by rofi: #
 #####################################
 
-bindsym $mod+d exec rofi -modi drun -show drun \
-		-config ~/.config/rofi/config.rasi
+bindsym $mod+d exec rofi -modi drun -show drun -config ~/.config/rofi/config.rasi
+# bindsym $mod+d exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'monospace-10' -p 'dmenu%'"
 
-bindsym $mod+t exec rofi -show window \
-		-config ~/.config/rofi/config.rasi
+bindsym $mod+t exec rofi -show window -config ~/.config/rofi/config.rasi

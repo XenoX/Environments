@@ -2,7 +2,7 @@
 
 case "$1" in
     lock)
-        i3lock -i ~/Pictures/bg.png
+        ~/.config/i3/scripts/blur-lock
         ;;
     logout)
         i3-msg exit
