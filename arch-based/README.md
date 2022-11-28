@@ -2,14 +2,9 @@
 
 ## Web dev packages
 
-### PHP 8
+### PHP
 ```shell
 sudo pacman -S --noconfirm php php-apcu php-cgi php-fpm php-intl xdebug
-```
-
-### PHP 7.4
-```shell
-pamac build --no-confirm php74 && pamac build --no-confirm php74-apcu php74-cgi php74-fpm php74-intl php74-mcrypt php74-xdebug
 ```
 
 #### Update php.ini

@@ -6,8 +6,8 @@ workspace_layout default
 
 for_window [class="^.*"] border pixel 2
 for_window [class=".*"] title_format "  %title"
-gaps inner 6
-gaps outer 4
+gaps inner 12
+gaps outer 0
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -163,10 +163,10 @@ workspace $ws10 output $screenPrimary
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id ~/.screenlayout/monitor.sh
-exec --no-startup-id feh --bg-fill ~/Pictures/dracula.jpg
+exec --no-startup-id while :; do ~/.config/wallpaper.sh; sleep 300; done
 # exec --no-startup-id xset s 480 dpms 600 600 600
 exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
-exec --no-startup-id sleep 3 && blueberry
+# exec --no-startup-id sleep 3 && blueberry
 exec --no-startup-id sleep 3 && flameshot
 
 ##################
@@ -210,11 +210,11 @@ mode "$mode_system" {
 ######################################
 
 # class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+client.focused          #ffb86c #ffb86c #282a36 #ffb86c   #ffb86c
+client.focused_inactive #282a36 #282a36 #282a36 #6272A4   #282a36
+client.unfocused        #282a36 #282a36 #ffb86c #282a36   #282a36
+client.urgent           #44475A #FF5555 #282a36 #FF5555   #FF5555
+client.placeholder      #282a36 #282a36 #F8F8F2 #282a36   #282a36
 
 client.background       #F8F8F2
 
@@ -230,10 +230,10 @@ bar {
         statusline #F8F8F2
         separator  #44475A
 
-        focused_workspace  #44475A #44475A #F8F8F2
-        active_workspace   #282A36 #44475A #F8F8F2
+        focused_workspace  #ffca80 #ffca80 #282a36
+        active_workspace   #ffca80 #ffca80 #282a36
         inactive_workspace #282A36 #282A36 #BFBFBF
-        urgent_workspace   #FF5555 #FF5555 #F8F8F2
+        urgent_workspace   #ff9580 #ff9580 #282a36
         binding_mode       #FF5555 #FF5555 #F8F8F2
     }
 }

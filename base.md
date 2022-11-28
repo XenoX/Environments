@@ -3,7 +3,7 @@
 git config --global user.name "XenoX"
 git config --global user.email "changeme@gmail.com"
 
-git config --global core.editor vim
+git config --global core.editor nvim
 
 ssh-keygen -t ed25519 -C "changeme@gmail.com"
 eval "$(ssh-agent -s)"

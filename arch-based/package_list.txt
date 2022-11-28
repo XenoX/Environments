@@ -1,5 +1,6 @@
 make
 vim
+neovim
 exa
 bitwarden
 neofetch
@@ -8,9 +9,14 @@ zsh
 terminator
 noto-fonts-emoji
 ttf-jetbrains-mono
+ttf-font-awesome
+blueberry
+
+docker
+docker-compose
+
 jdk-openjdk
 jre-openjdk
-blueberry
 nodejs
 npm
 mariadb
@@ -20,8 +26,7 @@ php-cgi
 php-fpm
 php-intl
 xdebug
-docker
-docker-compose
+
 nmap
 nikto
 john
