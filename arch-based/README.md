@@ -9,7 +9,7 @@ sudo pacman -S --noconfirm php php-apcu php-cgi php-fpm php-intl xdebug
 
 #### Update php.ini
 ```shell
-sudo vim /etc/php/php.ini # sudo vim /etc/php74/php.ini
+sudo vim /etc/php/php.ini
 ```
 Actions in php.ini :
 - Set `display_errors` to `On`

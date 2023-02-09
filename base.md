@@ -14,6 +14,15 @@ echo ".idea/" > ~/.gitignore
 git config --global core.excludesFile "~/.gitignore"
 ```
 
+## Fonts
+
+Download and unzip JetBrainsMono Nerd Font : https://www.nerdfonts.com/font-downloads
+```shell
+sudo mkdir -p /usr/share/fonts/jetbrains
+sudo cp ~/Downloads/JetBrainsMono/* /usr/share/fonts/jetbrains
+fc-cache -f -v
+```
+
 ## Terminal
 
 ```shell

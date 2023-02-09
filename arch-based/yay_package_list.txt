@@ -12,8 +12,3 @@ onlyoffice-bin
 
 nvm
 phpstorm
-
-cherrytree
-wordlists
-burpsuite
-ffuf-bin

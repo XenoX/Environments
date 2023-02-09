@@ -6,9 +6,8 @@ bitwarden
 neofetch
 discord
 zsh
-terminator
+kitty
 noto-fonts-emoji
-ttf-jetbrains-mono
 ttf-font-awesome
 blueberry
 
@@ -27,10 +26,4 @@ php-fpm
 php-intl
 xdebug
 
-nmap
-nikto
-john
-wpscan
-metasploit
-exploitdb
 python-pip

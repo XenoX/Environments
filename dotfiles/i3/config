@@ -4,7 +4,7 @@ font pango: Noto Sans Regular 10
 set $mod Mod4
 workspace_layout default
 
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 3
 for_window [class=".*"] title_format "  %title"
 gaps inner 12
 gaps outer 0
@@ -26,7 +26,6 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -38,7 +37,6 @@ bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
 
 # resize window (you can also use the mouse for that):
 mode "resize" {
@@ -57,12 +55,11 @@ bindsym $mod+r mode "resize"
 # keybindings for different actions: #
 ######################################
 
-bindsym $mod+Return exec terminator;focus
+bindsym $mod+Return exec kitty;focus
 bindsym $mod+q kill
 bindsym $mod+l exec ~/.config/i3/scripts/blur-lock
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym F1 exec ~/.config/i3/scripts/keyhint-2
 bindsym XF86MonBrightnessUp exec xbacklight +5 && notify-send "Brightness - $(xbacklight -get | cut -c1-2)%"
 bindsym XF86MonBrightnessDown exec xbacklight -5 && notify-send "Brightness - $(xbacklight -get | cut -c1-2)%"
 
@@ -130,16 +127,15 @@ mode "move" {
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "01 "
-set $ws2 "02 "
-set $ws3 "03 "
-set $ws4 "04 "
-set $ws5 "05 "
-set $ws6 "06 "
-set $ws7 "07 "
-set $ws8 "08 "
-set $ws9 "09 "
-set $ws10 "10 "
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
 
 # use workspaces on different displays:
 set $screenPrimary DP1
@@ -154,7 +150,6 @@ workspace $ws6 output $screenPrimary
 workspace $ws7 output $screenPrimary
 workspace $ws8 output $screenPrimary
 workspace $ws9 output $screenPrimary
-workspace $ws10 output $screenPrimary
 
 #############################################
 # autostart applications/services on login: #
@@ -162,11 +157,10 @@ workspace $ws10 output $screenPrimary
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id ~/.config/polybar/launch_main_screen.sh
 exec --no-startup-id ~/.screenlayout/monitor.sh
 exec --no-startup-id while :; do ~/.config/wallpaper.sh; sleep 300; done
-# exec --no-startup-id xset s 480 dpms 600 600 600
 exec --no-startup-id dunst -config $HOME/.config/dunst/dunstrc
-# exec --no-startup-id sleep 3 && blueberry
 exec --no-startup-id sleep 3 && flameshot
 
 ##################
@@ -209,40 +203,43 @@ mode "$mode_system" {
 # color settings for bar and windows #
 ######################################
 
-# class                 border  bground text    indicator child_border
-client.focused          #ffb86c #ffb86c #282a36 #ffb86c   #ffb86c
-client.focused_inactive #282a36 #282a36 #282a36 #6272A4   #282a36
-client.unfocused        #282a36 #282a36 #ffb86c #282a36   #282a36
-client.urgent           #44475A #FF5555 #282a36 #FF5555   #FF5555
-client.placeholder      #282a36 #282a36 #F8F8F2 #282a36   #282a36
+set $rosewater #f4dbd6
+set $flamingo  #f0c6c6
+set $pink      #f5bde6
+set $mauve     #c6a0f6
+set $red       #ed8796
+set $maroon    #ee99a0
+set $peach     #f5a97f
+set $green     #a6da95
+set $teal      #8bd5ca
+set $sky       #91d7e3
+set $sapphire  #7dc4e4
+set $blue      #8aadf4
+set $lavender  #b7bdf8
+set $text      #cad3f5
+set $subtext1  #b8c0e0
+set $subtext0  #a5adcb
+set $overlay2  #939ab7
+set $overlay1  #8087a2
+set $overlay0  #6e738d
+set $surface2  #5b6078
+set $surface1  #494d64
+set $surface0  #363a4f
+set $base      #24273a
+set $mantle    #1e2030
+set $crust     #181926
 
-client.background       #F8F8F2
-
-font pango: Noto Sans Regular 10
-
-bar {
-    position top
-    status_command i3blocks -c ~/.config/i3/i3blocks.conf
-    tray_output primary
-    tray_padding 3
-    colors {
-        background #282A36
-        statusline #F8F8F2
-        separator  #44475A
-
-        focused_workspace  #ffca80 #ffca80 #282a36
-        active_workspace   #ffca80 #ffca80 #282a36
-        inactive_workspace #282A36 #282A36 #BFBFBF
-        urgent_workspace   #ff9580 #ff9580 #282a36
-        binding_mode       #FF5555 #FF5555 #F8F8F2
-    }
-}
+# target                 title_border  bg     text    indicator   border
+client.focused           $blue         $blue  $crust  $rosewater  $blue
+client.focused_inactive  $blue         $base  $text   $rosewater  $crust
+client.unfocused         $blue         $base  $text   $rosewater  $crust
+client.urgent            $blue         $red   $crust  $overlay0   $blue
+client.placeholder       $overlay0     $base  $text   $overlay0   $overlay0
+client.background        $base
 
 #####################################
 # Application menu handled by rofi: #
 #####################################
 
 bindsym $mod+d exec rofi -modi drun -show drun -config ~/.config/rofi/config.rasi
-# bindsym $mod+d exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'monospace-10' -p 'dmenu%'"
-
 bindsym $mod+t exec rofi -show window -config ~/.config/rofi/config.rasi

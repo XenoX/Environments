@@ -21,14 +21,10 @@ fc-cache -f -v
 
 ## Web dev packages
 
-### PHP 8.1
+### PHP
+
 ```shell
 sudo apt install php8.1 php8.1-intl php8.1-curl php8.1-fpm php8.1-cgi php8.1-opcache php8.1-xml php8.1-mbstring php-xdebug
-```
-
-### PHP 7.4
-```shell
-sudo apt install php7.4 php7.4-intl php7.4-xdebug php7.4-fpm php7.4-cgi php7.4-apcu php7.4-xml php7.4-mbstring
 ```
 
 #### Update php.ini
