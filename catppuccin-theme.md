@@ -13,8 +13,8 @@ https://github.com/catppuccin
     - yay -S spicetify-cli
     - git clone git@github.com:catppuccin/spicetify.git
     - cp -r spicetify/catppuccin-* ~/.config/spicetify/Themes/
-    - spicetify config current_theme catppuccin-macchiato
-    - spicetify config color_scheme orange
+    - spicetify config current_theme catppuccin-frappe
+    - spicetify config color_scheme peach
     - spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
-    - spicetify config extensions catppuccin-macchiato.js
+    - spicetify config extensions catppuccin-frappe.js
     - spicetify apply
