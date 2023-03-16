@@ -4,7 +4,7 @@
 
 ### PHP
 ```shell
-sudo pacman -S --noconfirm php php-apcu php-cgi php-fpm php-intl xdebug
+sudo pacman -S --noconfirm php php-apcu php-cgi php-fpm xdebug
 ```
 
 #### Update php.ini
@@ -18,8 +18,8 @@ Actions in php.ini :
 - Uncomment `extension=intl`
 - Uncomment `zend_extension=opcache`
 - Uncomment `extension=pdo_mysql`
-- Uncomment `opcache.enable=1`
 - Add `zend_extension=xdebug`
+- Uncomment `opcache.enable=1`
 
 ```shell
 php -v # Check if Zend OPcache and Xdebug are shown
@@ -36,8 +36,8 @@ sudo mysql_secure_installation # type root password / n / n / Y / Y / Y / Y
 # Create User
 sudo mysql
 
-CREATE USER 'xenox'@localhost IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON *.* TO 'xenox'@localhost IDENTIFIED BY 'password';
+CREATE USER 'xenox'@localhost IDENTIFIED BY 'panda';
+GRANT ALL PRIVILEGES ON *.* TO 'xenox'@localhost IDENTIFIED BY 'panda';
 FLUSH PRIVILEGES;
 
 mysql -u xenox -p # For test mariaDB connection

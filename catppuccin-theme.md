@@ -1,9 +1,5 @@
 https://github.com/catppuccin
-
-- https://github.com/catppuccin/kitty
-- https://github.com/catppuccin/gtk
 - https://github.com/catppuccin/papirus-folders
-- https://github.com/catppuccin/dunst
 - https://github.com/catppuccin/discord
 - https://github.com/catppuccin/firefox
 - https://github.com/catppuccin/telegram

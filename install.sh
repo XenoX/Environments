@@ -1,7 +1,11 @@
 #!/bin/bash
-mkdir -p ~/.config/BetterDiscord/themes
 mkdir -p ~/.config/i3/scripts
+mkdir -p ~/.config/polybar
+mkdir -p ~/.config/kitty
+mkdir -p ~/.config/picom
 mkdir -p ~/Pictures/wallpaper
+
+mkdir -p ~/.local/share/rofi/themes
 
 cp -vr dotfiles/.Xresources ~/
 
@@ -22,8 +26,6 @@ sudo chmod +x ~/.config/wallpaper.sh
 
 cp -vr dotfiles/.config/polybar/* ~/.config/polybar/
 sudo chmod +x ~/.config/polybar/scripts/*
-
-cp -vr dotfiles/.config/BetterDiscord/themes/* ~/.config/BetterDiscord/themes/
 
 cp -vr dotfiles/.local/share/rofi/themes/* ~/.local/share/rofi/themes/
 

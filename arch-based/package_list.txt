@@ -7,13 +7,11 @@ neofetch
 discord
 zsh
 kitty
+polybar
+picom
 noto-fonts-emoji
 ttf-font-awesome
 blueberry
-
-docker
-docker-compose
-
 jdk-openjdk
 jre-openjdk
 nodejs
@@ -23,7 +21,5 @@ php
 php-apcu
 php-cgi
 php-fpm
-php-intl
 xdebug
-
 python-pip

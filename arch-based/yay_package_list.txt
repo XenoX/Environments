@@ -1,7 +1,6 @@
 feh
 spotify
-spicetify-cli
-vscodium
+vscodium-bin
 flameshot
 slack-desktop
 teams
@@ -9,6 +8,7 @@ ttf-meslo-nerd-font-powerlevel10k
 megasync-bin
 telegram-desktop-bin
 onlyoffice-bin
-
 nvm
 phpstorm
+catppuccin-gtk-theme-frappe
+papirus-folders-catppuccin-git # papirus-folders -C cat-frappe-peach

@@ -60,8 +60,8 @@ bindsym $mod+q kill
 bindsym $mod+l exec ~/.config/i3/scripts/blur-lock
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym XF86MonBrightnessUp exec xbacklight +5 && notify-send "Brightness - $(xbacklight -get | cut -c1-2)%"
-bindsym XF86MonBrightnessDown exec xbacklight -5 && notify-send "Brightness - $(xbacklight -get | cut -c1-2)%"
+bindsym XF86MonBrightnessUp exec ~/.config/i3/scripts/brightness + eDP-1 0.2
+bindsym XF86MonBrightnessDown exec ~/.config/i3/scripts/brightness - eDP-1 0.2
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -88,15 +88,15 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # volume
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-
 
 # gradular volume control
-bindsym $mod+XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && pkill -RTMIN+1 i3blocks
-bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- && pkill -RTMIN+1 i3blocks
+bindsym $mod+XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+
+bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 1%-
 
 # mute
-bindsym XF86AudioMute exec amixer sset Master toggle && killall -USR1 i3blocks
+bindsym XF86AudioMute exec amixer sset Master toggle
 
 # audio control
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -107,7 +107,6 @@ bindsym XF86AudioPrev exec playerctl previous
 ## App shortcuts
 bindsym $mod+w exec /usr/bin/firefox
 bindsym $mod+n exec /usr/bin/thunar
-bindsym $mod+c exec /usr/bin/vscodium
 bindsym Print exec flameshot gui
 
 ##########################################
@@ -116,14 +115,14 @@ bindsym Print exec flameshot gui
 
 bindsym $mod+shift+S mode "move"
 mode "move" {
-	bindsym Left move workspace to output left, focus output left, mode "default"
-	bindsym Right move workspace to output right, focus output right, mode "default"
-	bindsym Up move workspace to output up, focus output up, mode "default"
-	bindsym Down move workspace to output down, focus output down, mode "default"
+    bindsym Left move workspace to output left, focus output left, mode "default"
+    bindsym Right move workspace to output right, focus output right, mode "default"
+    bindsym Up move workspace to output up, focus output up, mode "default"
+    bindsym Down move workspace to output down, focus output down, mode "default"
 
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
-	bindsym $mod+Shift+S mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+Shift+S mode "default"
 }
 
 # Define names for default workspaces for which we configure key bindings later on.
@@ -139,8 +138,8 @@ set $ws8 8
 set $ws9 9
 
 # use workspaces on different displays:
-set $screenPrimary DP1
-set $screenSecondary DP3-2
+set $screenPrimary DP-1-1
+set $screenSecondary eDP-1
 
 workspace $ws1 output $screenPrimary
 workspace $ws2 output $screenPrimary

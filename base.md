@@ -5,13 +5,13 @@ git config --global user.email "changeme@gmail.com"
 
 git config --global core.editor nvim
 
+echo ".idea/" > ~/.gitignore
+git config --global core.excludesFile "~/.gitignore"
+
 ssh-keygen -t ed25519 -C "changeme@gmail.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 cat ~/.ssh/id_ed25519.pub # copy past to GitHub
-
-echo ".idea/" > ~/.gitignore
-git config --global core.excludesFile "~/.gitignore"
 ```
 
 ## Fonts
@@ -44,7 +44,7 @@ alias ll="exa -l -h"
 ### Symfony & Composer
 ```shell
 wget https://get.symfony.com/cli/installer -O - | bash
-sudo ln -s ~/.symfony/bin/symfony /usr/local/bin/symfony
+sudo ln -s ~/.symfony5/bin/symfony /usr/local/bin/symfony
  
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
