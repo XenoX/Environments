@@ -4,7 +4,7 @@
 ##
 ## launch alacritty with alt config
 
-CONFIG="$HOME/.config/hypr/alacritty/alacritty.yml"
+CONFIG="$HOME/.config/hypr/alacritty/alacritty.toml"
 
 if [ "$1" == "-f" ]; then
 	alacritty --class 'alacritty-float,alacritty-float' --config-file "$CONFIG"

@@ -9,7 +9,6 @@ DIR="$HOME/.config/hypr"
 
 ## Directories ------------------------------
 PATH_ALAC="$DIR/alacritty"
-PATH_FOOT="$DIR/foot"
 PATH_MAKO="$DIR/mako"
 PATH_ROFI="$DIR/rofi"
 PATH_WAYB="$DIR/waybar"
@@ -91,67 +90,31 @@ apply_wallpaper() {
 ## Alacritty ---------------------------------
 apply_alacritty() {
 	# alacritty : colors
-	cat > ${PATH_ALAC}/colors.yml <<- _EOF_
+	cat > ${PATH_ALAC}/colors.toml <<- _EOF_
 		## Colors configuration
-		colors:
-		  # Default colors
-		  primary:
-		    background: '${background}'
-		    foreground: '${foreground}'
+		[colors.primary]
+		background = "${background}"
+		foreground = "${foreground}"
 
-		  # Normal colors
-		  normal:
-		    black:   '${color0}'
-		    red:     '${color1}'
-		    green:   '${color2}'
-		    yellow:  '${color3}'
-		    blue:    '${color4}'
-		    magenta: '${color5}'
-		    cyan:    '${color6}'
-		    white:   '${color7}'
+		[colors.normal]
+		black =   "${color0}"
+		red =     "${color1}"
+		green =   "${color2}"
+		yellow =  "${color3}"
+		blue =    "${color4}"
+		magenta = "${color5}"
+		cyan =    "${color6}"
+		white =   "${color7}"
 
-		  # Bright colors
-		  bright:
-		    black:   '${color8}'
-		    red:     '${color9}'
-		    green:   '${color10}'
-		    yellow:  '${color11}'
-		    blue:    '${color12}'
-		    magenta: '${color13}'
-		    cyan:    '${color14}'
-		    white:   '${color15}'
-	_EOF_
-}
-
-## Foot --------------------------------------
-apply_foot() {
-	# foot : colors
-	cat > ${PATH_FOOT}/colors.ini <<- _EOF_
-		## Colors configuration
-		[colors]
-		alpha=1.0
-		foreground=${foreground:1}
-		background=${background:1}
-
-		## Normal/regular colors (color palette 0-7)
-		regular0=${color0:1}  # black
-		regular1=${color1:1}  # red
-		regular2=${color2:1}  # green
-		regular3=${color3:1}  # yellow
-		regular4=${color4:1}  # blue
-		regular5=${color5:1}  # magenta
-		regular6=${color6:1}  # cyan
-		regular7=${color7:1}  # white
-
-		## Bright colors (color palette 8-15)
-		bright0=${color8:1}   # bright black
-		bright1=${color9:1}   # bright red
-		bright2=${color10:1}   # bright green
-		bright3=${color11:1}   # bright yellow
-		bright4=${color12:1}   # bright blue
-		bright5=${color13:1}   # bright magenta
-		bright6=${color14:1}   # bright cyan
-		bright7=${color15:1}   # bright white
+		[colors.bright]
+		black =   "${color8}"
+		red =     "${color9}"
+		green =   "${color10}"
+		yellow =  "${color11}"
+		blue =    "${color12}"
+		magenta = "${color13}"
+		cyan =    "${color14}"
+		white =   "${color15}"
 	_EOF_
 }
 
@@ -286,7 +249,6 @@ fi
 ## Execute Script ---------------------------
 apply_wallpaper
 apply_alacritty
-apply_foot
 apply_mako
 apply_rofi
 apply_waybar

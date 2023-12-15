@@ -42,28 +42,3 @@ FLUSH PRIVILEGES;
 
 mysql -u xenox -p # For test mariaDB connection
 ```
-
-### Setup wireguard VPN (Mullvad)
-
-```shell
-sudo pacman -S wireguard-tools # VPN
-```
-
-```shell
-# Download configurations files in /etc/wireguard/
-
-sudo systemctl stop wg-quick@mullvad-frX.service
-sudo chmod -R og-rwx /etc/wireguard/*
-
-sudo systemctl enable wg-quick@mullvad-frX.service
-
-sudo systemctl start wg-quick@mullvad-frX.service # for start
-sudo systemctl stop wg-quick@mullvad-frX.service # for stop
-```
-
-## Miscellaneous
-
-Remove Orphans packages
-```shell
-pacman -Rns $(pacman -Qtdq) # Risky
-```
