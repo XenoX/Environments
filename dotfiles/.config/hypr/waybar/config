@@ -1,0 +1,21 @@
+{
+    "include": "~/.config/hypr/waybar/modules",
+    "output": ["eDP-1", "DP-5"],
+    "name": "main-bar",
+    "id": "main-bar",
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "width": "",
+    "spacing": 6,
+    "margin": 0,
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "fixed-center": true,
+    "ipc": true,
+    "modules-left": ["custom/menu", "cpu", "memory", "disk", "idle_inhibitor"],
+    "modules-center": ["hyprland/workspaces", "custom/spotify", "tray"],
+    "modules-right": ["custom/themes", "pulseaudio", "backlight", "bluetooth", "network", "battery", "clock", "custom/power"]
+}
