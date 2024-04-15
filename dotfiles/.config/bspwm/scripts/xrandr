@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+xrandr --output DisplayPort-2 --mode 2560x1440 --rate 60 --primary --pos 0x0
+xrandr --output eDP --mode 1920x1080 --rate 60 --pos 0x1440
+xrandr --output DisplayPort-3 --mode 1920x1080 --rate 60 --pos 2560x0 --rotate left
