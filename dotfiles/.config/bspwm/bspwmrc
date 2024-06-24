@@ -23,20 +23,26 @@ bash "$BSPDIR/scripts/xrandr"
 ## Current theme ---------------------------------------------#
 
 ## Bspwm colors
-BSPWM_FBC='#DE898E'
+# BSPWM_FBC='#DE898E'
+BSPWM_FBC='#74c7ec'
 BSPWM_NBC='#1E1E2E'
 BSPWM_ABC='#F5C2E7'
 BSPWM_PFC='#A6E3A1'
 
 ## Bspwm appearance
-BSPWM_BORDER='2'
+BSPWM_BORDER='3'
 BSPWM_GAP='10'
-BSPWM_SRATIO='0.50'
+BSPWM_SRATIO='0.45'
 
 ## Configurations --------------------------------------------#
 
 ## Manage Monitors and Workspaces
 ##
+
+INTERNAL_MONITOR="eDP"
+EXTERNAL_MAIN_MONITOR="DisplayPort-0"
+EXTERNAL_SECOND_MONITOR="HDMI-A-0"
+
 ## Default Setup (Set 8 workspaces on each monitor)
 default_workspaces() {
 	for monitor in `xrandr -q | grep -w 'connected' | cut -d' ' -f1`; do
@@ -46,34 +52,44 @@ default_workspaces() {
 
 ## Two Monitors Setup (Laptop and external monitor, set 4 workspaces on each monitor)
 two_monitors_workspaces() {
-	# change these values according to your system
 	# you can use `xrandr -q` to get the names of monitors
-	INTERNAL_MONITOR="eDP"
-	EXTERNAL_MONITOR="DisplayPort-2"
-	if [[ $(xrandr -q | grep "${EXTERNAL_MONITOR} connected") ]]; then
-		bspc monitor "$EXTERNAL_MONITOR" -d '' '' '' ''
+	if [[ $(xrandr -q | grep "${EXTERNAL_MAIN_MONITOR} connected") ]]; then
+		bspc monitor "$EXTERNAL_MAIN_MONITOR" -d '' '' '' ''
 		bspc monitor "$INTERNAL_MONITOR" -d '' '' '' ''
-		bspc wm -O "$EXTERNAL_MONITOR" "$INTERNAL_MONITOR"
+		bspc wm -O "$EXTERNAL_MAIN_MONITOR" "$INTERNAL_MONITOR"
 	else
-		bspc monitor "$INTERNAL_MONITOR" -d '' '' '' '' '' '' '' ''
+		default_workspaces
+	fi
+}
+
+## Two Monitors Setup (two external monitors, set 4 workspaces on each monitor)
+two_monitors__without_laptop_workspaces() {
+	# you can use `xrandr -q` to get the names of monitors
+	if [[ $(xrandr -q | grep -e "${EXTERNAL_MAIN_MONITOR} connected" -e "${EXTERNAL_SECOND_MONITOR} connected") ]]; then
+		bspc monitor "$EXTERNAL_MAIN_MONITOR" -d '' '' '' ''
+		bspc monitor "$EXTERNAL_SECOND_MONITOR" -d '' ''
+		bspc wm -O "$EXTERNAL_MAIN_MONITOR" "$EXTERNAL_SECOND_MONITOR"
+	else
+		default_workspaces
 	fi
 }
 
 ## Three Monitors Setup (Laptop and two external monitor, 3-2-3 workspaces)
 three_monitors_workspaces() {
-	# again, change these values accordingly
-	MONITOR_1="eDP"
-	MONITOR_2="DisplayPort-2"
-	MONITOR_3="DisplayPort-3"
-	bspc monitor "$MONITOR_1" -d '' ''
-	bspc monitor "$MONITOR_2" -d '' '' ''
-	bspc monitor "$MONITOR_3" -d '' ''
-	bspc wm -O "$MONITOR_2" "$MONITOR_3" "$MONITOR_1"
+	if [[ $(xrandr -q | grep -e "${EXTERNAL_MAIN_MONITOR} connected" -e "${EXTERNAL_SECOND_MONITOR} connected") ]]; then
+		bspc monitor "$INTERNAL_MONITOR" -d '' ''
+		bspc monitor "$EXTERNAL_MAIN_MONITOR" -d '' '' ''
+		bspc monitor "$EXTERNAL_SECOND_MONITOR" -d '' ''
+		bspc wm -O "$EXTERNAL_MAIN_MONITOR" "$EXTERNAL_SECOND_MONITOR" "$INTERNAL_MONITOR"
+	else
+		default_workspaces
+	fi
 }
 
 ## Uncomment only one function according to your needs
 #default_workspaces
 #two_monitors_workspaces
+#two_monitors__without_laptop_workspaces
 three_monitors_workspaces
 
 ## Apply bspwm configurations
@@ -103,7 +119,7 @@ bspc wm --adopt-orphans
 bspc rule -r *:*
 
 ## Always Floating Apps
-declare -a floating=(alacritty-float Pcmanfm Thunar Onboard Yad 'Firefox:Places' \
+declare -a floating=(alacritty-float Pcmanfm Onboard Yad 'Firefox:Places' \
 Viewnior feh Nm-connection-editor calamares Calamares)
 for i in ${floating[@]}; do
    bspc rule -a $i state=floating follow=on focus=on; done
